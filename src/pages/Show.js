@@ -2,7 +2,9 @@ import { useState } from "react"
 function Show(props) {
   const id = props.match.params.id
   const affirms = props.affirms
-  const affirm = affirms.find(p => p._id === id)
+  const affirm = affirms.find((p) => {
+        return p._id === id
+    })
 
   const [editForm, setEditForm] = useState(affirm)
 
@@ -13,12 +15,12 @@ function Show(props) {
 
   const handleSubmit = event => {
     event.preventDefault()
-    props.updateAffirms(editForm)
+    props.updateAffirms(editForm, affirm._id)
     props.history.push("/")
   }
 
   const removeAffirm = () => {
-    props.deleteAffirms(affirms._id)
+    props.deleteAffirms(affirm._id)
     props.history.push("/")
   }
 

@@ -1,6 +1,6 @@
 import {useState} from "react"
 import {Link} from "react-router-dom"
-
+import {Helmet} from 'react-helmet';
 function Index(props){
 //adding a state to our form
     const [newForm, setNewForm] = useState({
@@ -39,6 +39,9 @@ function Index(props){
     
     return props.affirms.map((affirm) => (
       <div key={affirm._id} className="affirm" background="black">
+          <Helmet>
+                <style>{'body { background-color: red; }'}</style>
+            </Helmet>
         <hr></hr>
         <Link to={`/affirms/${affirm._id}`}><h1>{affirm.date}</h1></Link>
         <h3>{affirm.affirmation} {affirm.name} </h3>
